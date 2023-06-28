@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PipeSpawner : MonoBehaviour
 {
+    public BirdScript bird;
     public GameObject pipe;
     public float spawnRate;
     private float timer = 0;
@@ -13,19 +14,24 @@ public class PipeSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bird = GameObject.FindGameObjectWithTag("Player").GetComponent<BirdScript>();
         spawnPipe();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer < spawnRate)
+        if (bird.birdIsAlive == true)
         {
-            timer = timer + Time.deltaTime;
-        }
-        else {
-            spawnPipe();
-        timer = 0;
+            if (timer < spawnRate)
+            {
+                timer = timer + Time.deltaTime;
+            }
+            else
+            {
+                spawnPipe();
+                timer = 0;
+            }
         }
     }
 
