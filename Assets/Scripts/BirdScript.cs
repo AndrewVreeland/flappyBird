@@ -24,10 +24,7 @@ public class BirdScript : MonoBehaviour
     void Update()
     {
         OutOfBounds();
-        if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
-        {
-            myRigidbody.velocity = Vector2.up * flapStrength;
-        }
+        birdMovement();
     }
 
     private void OutOfBounds() {
@@ -48,4 +45,11 @@ public class BirdScript : MonoBehaviour
         birdIsAlive = false;
         myRigidbody.gravityScale = gravity;
     }
+    private void birdMovement() {
+        if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
+        {
+            myRigidbody.velocity = Vector2.up * flapStrength;
+        }
+    }
+
 }
