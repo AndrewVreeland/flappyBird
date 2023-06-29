@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17430580}
   - component: {fileID: 17430579}
+  - component: {fileID: 17430581}
   m_Layer: 0
   m_Name: Logic Manager
   m_TagString: Logic
@@ -155,6 +156,8 @@ MonoBehaviour:
   playerScore: 0
   scoreText: {fileID: 34023875}
   GameOverScreen: {fileID: 1726661199}
+  ScoreChime: {fileID: 0}
+  scoreChime: {fileID: 0}
 --- !u!4 &17430580
 Transform:
   m_ObjectHideFlags: 0
@@ -168,8 +171,23 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &17430581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17430578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633382c1dd90c024580ea35584acb249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundJam: {fileID: 0}
+  landingPageJam: {fileID: 0}
+  scoreChime: {fileID: 0}
 --- !u!1 &34023874
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +363,7 @@ GameObject:
   - component: {fileID: 332374723}
   m_Layer: 3
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,7 +416,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 332374726}
-  flapStrength: 19.86
+  flapStrength: 25
+  gravity: 30.1
+  myTransform: {fileID: 332374727}
+  lowerBound: -15
+  upperBound: 16
   logic: {fileID: 17430579}
   birdIsAlive: 1
 --- !u!212 &332374725
@@ -468,7 +490,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.95
+  m_GravityScale: 4.02
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -488,12 +510,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332374722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17, y: 0.2, z: -0.28654355}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -12.69, y: 0.27, z: -0.28654355}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366601274
 GameObject:
@@ -658,9 +680,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d010f7f3f2af0614b91d1f0ec0fa7f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bird: {fileID: 332374724}
   pipe: {fileID: 8468018960839554228, guid: d7f5dcb79930a05489890a8923dfb893, type: 3}
   spawnRate: 3
-  heightOffSet: 10
+  heightOffSet: 6
 --- !u!4 &420815087
 Transform:
   m_ObjectHideFlags: 0
@@ -674,7 +697,70 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &529439622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529439624}
+  - component: {fileID: 529439623}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &529439623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529439622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8609ca861028684789f44d46f606d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: ff501114a0a230b4b8f30f1a67e02e2c, type: 3}
+    volume: 1
+    pitch: 1
+    name: ScoreChime
+    audioSource: {fileID: 0}
+    loop: 0
+  - clip: {fileID: 8300000, guid: af2d641803bcdfe46a75c7a9f7d35758, type: 3}
+    volume: 0.3
+    pitch: 1
+    name: MainTheme
+    audioSource: {fileID: 0}
+    loop: 1
+  - clip: {fileID: 8300000, guid: 5ff5e9c5a430d9b4794773dd7b11497f, type: 3}
+    volume: 0.31
+    pitch: 1
+    name: PipeCollision
+    audioSource: {fileID: 0}
+    loop: 0
+--- !u!4 &529439624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529439622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1179120301
 GameObject:
@@ -710,7 +796,7 @@ RectTransform:
   - {fileID: 34023877}
   - {fileID: 1726661200}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -870,7 +956,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1697385294
 GameObject:
@@ -922,7 +1008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 332374722}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1697385297
@@ -938,7 +1024,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1726661199
 GameObject:
