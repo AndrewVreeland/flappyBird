@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4950323295672519791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.9, y: -17.9, z: 0}
+  m_LocalPosition: {x: 5.9, y: -17.9, z: 1}
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -310,7 +310,6 @@ MonoBehaviour:
   bird: {fileID: 0}
   deadzone: -45
   moveSpeed: 15
-  stopDelay: 1
 --- !u!1 &8832300813549030795
 GameObject:
   m_ObjectHideFlags: 0

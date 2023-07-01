@@ -20,7 +20,6 @@ public class LogicScript : MonoBehaviour
     private void Start()
     {
         LoadPrefs();
-        FindObjectOfType<AudioManager>().play("MainTheme");
     }
 
    
@@ -37,20 +36,13 @@ public class LogicScript : MonoBehaviour
     }
 
     public void RestartGame() {
+        FindObjectOfType<AudioManager>().play("ButtonClick");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void gameOver() {
 
-        if (highScore == playerScore)
-        {
-            gameOverText.text = "New High Score: " + highScore.ToString();
-        }
-        else
-        {
-            gameOverText.text = " Game Over "; 
-        }
-
+       
         GameOverScreen.SetActive(true);
 
     }

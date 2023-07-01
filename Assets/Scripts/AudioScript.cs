@@ -25,15 +25,7 @@ public class AudioScript : MonoBehaviour
         
     }
 
-    void BackgroundJamTag() {
-       
-        
-    }
-
-    void LandingPageJamTag()
-    {
-
-    }
+   
     void ScoreChimeTag()
     {
         scoreChime.Play();

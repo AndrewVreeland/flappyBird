@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 7cde9ed5dd3911648855e0f01d4c5462
+  - enabled: 1
+    path: Assets/Scenes/SettingsMenu.unity
+    guid: 9cb0131d64169a94a9dd9142c7057db9
+  - enabled: 1
+    path: Assets/Scenes/FloppyBorg.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
