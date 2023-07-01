@@ -8,9 +8,9 @@ public class VolumeSliderScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if (!PlayerPrefs.HasKey("volume"))
+        if (!PlayerPrefs.HasKey("MasterVolume"))
         {
-            PlayerPrefs.SetFloat("volume", 1);
+            PlayerPrefs.SetFloat("MasterVolume", 1);
             Load();
         }
         else
@@ -25,15 +25,17 @@ public class VolumeSliderScript : MonoBehaviour
     public void ChangeVolume()
     {
         AudioListener.volume = volumeSlider.value;
+
         Save();
+
     }
 
     private void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("volume");
+        volumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
     }
     private void Save()
     {
-        PlayerPrefs.SetFloat("volume", volumeSlider.value);
+        PlayerPrefs.SetFloat("MasterVolume", volumeSlider.value);
     }
 }

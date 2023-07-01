@@ -1237,7 +1237,7 @@ MonoBehaviour:
     pitch: 1
     name: PipeCollision
     audioSource: {fileID: 0}
-    loop: 1
+    loop: 0
   - clip: {fileID: 8300000, guid: 73ab508c0b2e0b44e9fedb984e06c080, type: 3}
     volume: 0.31
     pitch: 1

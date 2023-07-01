@@ -12,7 +12,8 @@ public class BirdScript : MonoBehaviour
     public float upperBound;
     public LogicScript logic;
     public bool birdIsAlive = true;
-    
+    public Animator animator;
+    public Animator wingAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,8 @@ public class BirdScript : MonoBehaviour
     }
 
     private void birdIsDead() {
+        animator.SetBool("isAlive", false);
+        wingAnimator.SetBool("isAlive", false);
         birdIsAlive = false;
         myRigidbody.gravityScale = gravity;
     }
